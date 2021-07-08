@@ -3,7 +3,7 @@ var queryURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/signif
 
 d3.json(queryURL, function(seismicData) {
     // Base Map
-    var myMap = L.map("map", {
+    var myMap = L.map("map-id", {
         center: [37, -95],
         zoom: 5
     });
@@ -39,7 +39,7 @@ d3.json(queryURL, function(seismicData) {
         L.circle([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], {
             fillOpacity: 0.8,
             color: "red",
-            fillColor: "red",
+            fillColor: colors(feature.geometry.coordinates[2]),
             radius: markerSize(feature.properties.mag)
         }).addTo(myMap).bindPopup("<h3>" + feature.properties.place +
             "</h3><hr><p>" + new Date(feature.properties.time) + "</p><p>"  
