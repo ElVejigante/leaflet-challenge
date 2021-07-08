@@ -1,4 +1,4 @@
-### Warning: Mapbox API key (or access token)needed to run the code: https://www.mapbox.com and add your public access token to config.js
+### Warning: Mapbox API key (or access token) needed to run the code: https://www.mapbox.com and add your public access token to config.js
 
 # Leaflet Homework - Visualizing Data with Leaflet
 
