@@ -28,15 +28,15 @@ d3.json(queryURL, function(seismicData) {
     };
     function colors(d) {
         switch(true) {
-            case d>90:
+            case d>9:
                 return "darkgreen";
-            case d>70:
+            case d>7:
                 return "green";
-            case d>50:
+            case d>5:
                 return "lightgreen";
-            case d>30:
+            case d>3:
                 return "orange";
-            case d>10:
+            case d>1:
                 return "yellow";
         }
     }
