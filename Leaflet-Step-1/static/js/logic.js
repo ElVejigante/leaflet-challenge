@@ -3,7 +3,7 @@ var queryURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/signif
 
 d3.json(queryURL, function(seismicData) {
     // Base Map
-    var myMap = L.map("map-id", {
+    var myMap = L.map("map", {
         center: [37, -95],
         zoom: 5
     });
@@ -16,7 +16,7 @@ d3.json(queryURL, function(seismicData) {
         zoomOffset: -1,
         id: "mapbox/streets-v11",
         accessToken: API_KEY
-        }).addTo(myMap);
+        });
     
     function markerSize(mag) {
         return mag*5
