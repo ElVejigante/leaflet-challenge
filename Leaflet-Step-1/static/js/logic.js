@@ -37,7 +37,7 @@ d3.json(queryURL, function(seismicData) {
             return "#B7DF5F"
           }   
     };
-    earthquakeData.features.forEach(function (feature) {
+    seismicData.features.forEach(function (feature) {
         L.circle([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], {
             fillOpacity: 0.8,
             color: "black",
