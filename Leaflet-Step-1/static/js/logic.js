@@ -19,29 +19,27 @@ d3.json(queryURL, function(seismicData) {
         }).addTo(myMap);
     
     function markerSize(mag) {
-        return mag*3
+        return mag*5
     };
-
     function colors(d) {
-        if (d < 1){
-            return "#ED4311"
-          } else if ( d < 2){
-            return "#ED7211"
-          } else if (d < 3){
-            return "#EDB411"
-          } else if (d < 4){
-            return "#EDD911"
-          } else if (d < 5 ){
-            return "#DCED11"
-          } else {
-            return "#B7DF5F"
-          }   
-    };
+        switch(true) {
+            case d>90:
+                return "darkgreen";
+            case d>70:
+                return "green";
+            case d>50:
+                return "lightgreen";
+            case d>30:
+                return "orange";
+            case d>10:
+                return "yellow";
+        }
+    }
     seismicData.features.forEach(function (feature) {
         L.circle([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], {
             fillOpacity: 0.8,
-            color: "black",
-            fillColor: colors(feature.properties.mag),
+            color: "red",
+            fillColor: "red",
             radius: markerSize(feature.properties.mag)
         }).addTo(myMap).bindPopup("<h3>" + feature.properties.place +
             "</h3><hr><p>" + new Date(feature.properties.time) + "</p><p>"  
