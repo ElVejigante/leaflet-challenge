@@ -40,5 +40,23 @@ d3.json(queryURL, function(seismicData) {
                 return "yellow";
         }
     }
+    L.geoJSON(seismicData, {
+        pointToLayer: function(feature, location) {
+          return L.circleMarker(location, {
+            radius: markerSize(feature.properties.mag),
+            fillColor: colors(feature.geometry.coordinates[2]),
+            fillOpacity: 0.7,
+            color: "black",
+            stroke: true,
+            weight: 0.5
+          });
+        },
     
+        onEachFeature: function(feature, layer) {
+          layer.bindPopup("<h3>Location: "+ feature.properties.place + "</h3><hr><p>Date: " + new Date(feature.properties.time) 
+                          + "</p><hr><p>" + "Magnitude: " + feature.properties.mag + "</p>");
+        }
+      }).addTo(quakes);
+    
+      quakes.addTo(myMap);
 })
